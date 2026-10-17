@@ -1,0 +1,3 @@
+CREATE DATABASE petdb;
+CREATE DATABASE appointmentdb;
+CREATE DATABASE catalogdb;
