@@ -1,0 +1,12 @@
+com\petcare\appointmentservice\exception\InvalidReferenceException.class
+com\petcare\appointmentservice\model\Appointment.class
+com\petcare\appointmentservice\AppointmentServiceApplication.class
+com\petcare\appointmentservice\config\OpenApiConfig.class
+com\petcare\appointmentservice\exception\ServiceUnavailableException.class
+com\petcare\appointmentservice\exception\AppointmentNotFoundException.class
+com\petcare\appointmentservice\service\AppointmentService.class
+com\petcare\appointmentservice\security\ApiKeyFilter.class
+com\petcare\appointmentservice\client\CatalogClient.class
+com\petcare\appointmentservice\repository\AppointmentRepository.class
+com\petcare\appointmentservice\controller\AppointmentController.class
+com\petcare\appointmentservice\client\PetClient.class

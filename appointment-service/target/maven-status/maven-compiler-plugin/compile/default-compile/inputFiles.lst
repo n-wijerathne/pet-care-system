@@ -1,0 +1,12 @@
+C:\pet-care-system\appointment-service\src\main\java\com\petcare\appointmentservice\AppointmentServiceApplication.java
+C:\pet-care-system\appointment-service\src\main\java\com\petcare\appointmentservice\client\CatalogClient.java
+C:\pet-care-system\appointment-service\src\main\java\com\petcare\appointmentservice\client\PetClient.java
+C:\pet-care-system\appointment-service\src\main\java\com\petcare\appointmentservice\config\OpenApiConfig.java
+C:\pet-care-system\appointment-service\src\main\java\com\petcare\appointmentservice\controller\AppointmentController.java
+C:\pet-care-system\appointment-service\src\main\java\com\petcare\appointmentservice\exception\AppointmentNotFoundException.java
+C:\pet-care-system\appointment-service\src\main\java\com\petcare\appointmentservice\exception\InvalidReferenceException.java
+C:\pet-care-system\appointment-service\src\main\java\com\petcare\appointmentservice\exception\ServiceUnavailableException.java
+C:\pet-care-system\appointment-service\src\main\java\com\petcare\appointmentservice\model\Appointment.java
+C:\pet-care-system\appointment-service\src\main\java\com\petcare\appointmentservice\repository\AppointmentRepository.java
+C:\pet-care-system\appointment-service\src\main\java\com\petcare\appointmentservice\security\ApiKeyFilter.java
+C:\pet-care-system\appointment-service\src\main\java\com\petcare\appointmentservice\service\AppointmentService.java
