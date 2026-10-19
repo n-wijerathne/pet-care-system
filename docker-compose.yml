@@ -16,5 +16,17 @@ services:
       timeout: 5s
       retries: 10
 
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.4.0
+    container_name: pet-keycloak
+    command: start-dev --import-realm
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin123
+    ports:
+      - "8180:8080"
+    volumes:
+      - ./keycloak/petcare-realm.json:/opt/keycloak/data/import/petcare-realm.json
+
 volumes:
   pgdata:

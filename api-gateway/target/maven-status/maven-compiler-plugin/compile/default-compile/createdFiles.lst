@@ -1,2 +1,3 @@
 com\petcare\apigateway\ApiGatewayApplication.class
 com\petcare\apigateway\config\GatewayRoutesConfig.class
+com\petcare\apigateway\config\SecurityConfig.class
