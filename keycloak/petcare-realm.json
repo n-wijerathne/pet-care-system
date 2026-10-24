@@ -1,8 +1,10 @@
 {
   "realm": "petcare",
+  "displayName": "PetCare",
   "enabled": true,
   "sslRequired": "none",
   "registrationAllowed": true,
+  "loginTheme": "petcare",
   "accessTokenLifespan": 1800,
   "roles": {
     "realm": [
@@ -25,7 +27,10 @@
       ],
       "webOrigins": [
         "http://localhost:3000"
-      ]
+      ],
+      "attributes": {
+        "post.logout.redirect.uris": "http://localhost:3000/*"
+      }
     }
   ],
   "users": [
@@ -36,10 +41,26 @@
       "firstName": "Nimna",
       "lastName": "Owner",
       "email": "nimna@example.com",
+      "attributes": {
+        "phoneNumber": ["0771234567"]
+      },
       "credentials": [
         { "type": "password", "value": "Pet@12345", "temporary": false }
       ],
       "realmRoles": [ "user" ]
     }
-  ]
+  ],
+  "components": {
+    "org.keycloak.userprofile.UserProfileProvider": [
+      {
+        "providerId": "declarative-user-profile",
+        "subComponents": {},
+        "config": {
+          "kc.user.profile.config": [
+            "{\"attributes\":[{\"name\":\"username\",\"displayName\":\"Username\",\"validations\":{\"length\":{\"min\":3,\"max\":255},\"username-prohibited-characters\":{},\"up-username-not-idn-homograph\":{}},\"permissions\":{\"view\":[\"admin\",\"user\"],\"edit\":[\"admin\",\"user\"]},\"multivalued\":false},{\"name\":\"email\",\"displayName\":\"Email\",\"validations\":{\"email\":{},\"length\":{\"max\":255}},\"required\":{\"roles\":[\"user\"]},\"permissions\":{\"view\":[\"admin\",\"user\"],\"edit\":[\"admin\",\"user\"]},\"multivalued\":false},{\"name\":\"firstName\",\"displayName\":\"First name\",\"validations\":{\"length\":{\"max\":255},\"person-name-prohibited-characters\":{}},\"required\":{\"roles\":[\"user\"]},\"permissions\":{\"view\":[\"admin\",\"user\"],\"edit\":[\"admin\",\"user\"]},\"multivalued\":false},{\"name\":\"lastName\",\"displayName\":\"Last name\",\"validations\":{\"length\":{\"max\":255},\"person-name-prohibited-characters\":{}},\"required\":{\"roles\":[\"user\"]},\"permissions\":{\"view\":[\"admin\",\"user\"],\"edit\":[\"admin\",\"user\"]},\"multivalued\":false},{\"name\":\"phoneNumber\",\"displayName\":\"Contact number\",\"validations\":{\"pattern\":{\"pattern\":\"^[0-9+ ]{9,15}$\",\"error-message\":\"Enter a valid contact number, for example 0771234567\"}},\"required\":{\"roles\":[\"user\"]},\"permissions\":{\"view\":[\"admin\",\"user\"],\"edit\":[\"admin\",\"user\"]},\"multivalued\":false}],\"groups\":[{\"name\":\"user-metadata\",\"displayHeader\":\"User metadata\",\"displayDescription\":\"Attributes, which refer to user metadata\"}]}"
+          ]
+        }
+      }
+    ]
+  }
 }

@@ -37,9 +37,9 @@ public class PetService {
         existing.setBreed(updated.getBreed());
         existing.setAge(updated.getAge());
         existing.setOwnerName(updated.getOwnerName());
+        existing.setPhoto(updated.getPhoto());
         return petRepository.save(existing);
     }
-
     public void deletePet(Long id) {
         Pet existing = getPetById(id);
         petRepository.delete(existing);

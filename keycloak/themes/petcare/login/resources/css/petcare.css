@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+/* PetCare login theme: light purple */
+:root {
+  --pf-v5-global--primary-color--100: #7c3aed;
+  --pf-v5-global--primary-color--200: #5b21b6;
+  --pf-v5-global--active-color--100: #7c3aed;
+  --pf-v5-global--link--Color: #7c3aed;
+  --pf-v5-global--link--Color--hover: #5b21b6;
+  --pf-v5-global--BorderColor--100: #ddd6fe;
+}
+
+html,
+body,
+.login-pf,
+.login-pf body,
+.pf-v5-c-login,
+.pf-c-login {
+  font-family: "Poppins", system-ui, "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #faf5ff 0%, #ede9fe 55%, #ddd6fe 100%) !important;
+  background-attachment: fixed !important;
+}
+
+/* Brand name above the card */
+#kc-header,
+#kc-header-wrapper,
+.pf-v5-c-login__header {
+  color: #4c1d95 !important;
+}
+
+#kc-header-wrapper {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+#kc-header-wrapper::before {
+  content: "🐾 ";
+}
+
+/* The white card */
+.pf-v5-c-login__main,
+.pf-c-login__main {
+  background: #ffffff !important;
+  border-top: 5px solid #7c3aed !important;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(91, 33, 182, 0.18);
+}
+
+#kc-page-title,
+.pf-v5-c-title {
+  color: #2e1065;
+}
+
+/* Buttons */
+.pf-v5-c-button.pf-m-primary {
+  background: linear-gradient(135deg, #7c3aed, #9333ea) !important;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.pf-v5-c-button.pf-m-primary:hover {
+  background: linear-gradient(135deg, #6d28d9, #7e22ce) !important;
+}
+
+.pf-v5-c-form-control {
+  border-radius: 8px;
+}

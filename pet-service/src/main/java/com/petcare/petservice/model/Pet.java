@@ -1,5 +1,6 @@
 package com.petcare.petservice.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -7,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "pets")
@@ -30,6 +32,11 @@ public class Pet {
     @NotBlank(message = "Owner name is required")
     private String ownerName;
 
+    // The pet's photo as a small image "data URL" text (the client resizes it first)
+    @Column(columnDefinition = "TEXT")
+    @Size(max = 700000, message = "Photo is too large")
+    private String photo;
+
     public Pet() {
     }
 
@@ -50,4 +57,7 @@ public class Pet {
 
     public String getOwnerName() { return ownerName; }
     public void setOwnerName(String ownerName) { this.ownerName = ownerName; }
+
+    public String getPhoto() { return photo; }
+    public void setPhoto(String photo) { this.photo = photo; }
 }
