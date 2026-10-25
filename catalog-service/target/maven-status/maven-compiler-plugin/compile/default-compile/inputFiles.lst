@@ -1,8 +1,0 @@
-C:\pet-care-system\catalog-service\src\main\java\com\petcare\catalogservice\CatalogServiceApplication.java
-C:\pet-care-system\catalog-service\src\main\java\com\petcare\catalogservice\config\OpenApiConfig.java
-C:\pet-care-system\catalog-service\src\main\java\com\petcare\catalogservice\controller\CareOfferingController.java
-C:\pet-care-system\catalog-service\src\main\java\com\petcare\catalogservice\exception\CareOfferingNotFoundException.java
-C:\pet-care-system\catalog-service\src\main\java\com\petcare\catalogservice\model\CareOffering.java
-C:\pet-care-system\catalog-service\src\main\java\com\petcare\catalogservice\repository\CareOfferingRepository.java
-C:\pet-care-system\catalog-service\src\main\java\com\petcare\catalogservice\security\ApiKeyFilter.java
-C:\pet-care-system\catalog-service\src\main\java\com\petcare\catalogservice\service\CareOfferingService.java
