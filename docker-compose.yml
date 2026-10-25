@@ -1,4 +1,5 @@
 services:
+  # ---------- Infrastructure ----------
   postgres:
     image: postgres:16
     container_name: pet-postgres
@@ -39,6 +40,101 @@ services:
       interval: 5s
       timeout: 3s
       retries: 10
+
+  # ---------- Microservices ----------
+  pet-service:
+    build: ./pet-service
+    container_name: pet-service
+    restart: on-failure
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/petdb
+      DB_USERNAME: petcare
+      DB_PASSWORD: petcare123
+      PET_API_KEY: ${PET_API_KEY:-pet-service-key-2026}
+      JAVA_TOOL_OPTIONS: -Xmx300m
+    ports:
+      - "8081:8081"
+
+  catalog-service:
+    build: ./catalog-service
+    container_name: catalog-service
+    restart: on-failure
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/catalogdb
+      DB_USERNAME: petcare
+      DB_PASSWORD: petcare123
+      CATALOG_API_KEY: ${CATALOG_API_KEY:-catalog-service-key-2026}
+      JAVA_TOOL_OPTIONS: -Xmx300m
+    ports:
+      - "8083:8083"
+
+  appointment-service:
+    build: ./appointment-service
+    container_name: appointment-service
+    restart: on-failure
+    depends_on:
+      postgres:
+        condition: service_healthy
+      pet-service:
+        condition: service_started
+      catalog-service:
+        condition: service_started
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/appointmentdb
+      DB_USERNAME: petcare
+      DB_PASSWORD: petcare123
+      APPOINTMENT_API_KEY: ${APPOINTMENT_API_KEY:-appointment-service-key-2026}
+      PET_SERVICE_URL: http://pet-service:8081
+      PET_API_KEY: ${PET_API_KEY:-pet-service-key-2026}
+      CATALOG_SERVICE_URL: http://catalog-service:8083
+      CATALOG_API_KEY: ${CATALOG_API_KEY:-catalog-service-key-2026}
+      JAVA_TOOL_OPTIONS: -Xmx300m
+    ports:
+      - "8082:8082"
+
+  # ---------- Gateway and client ----------
+  api-gateway:
+    build: ./api-gateway
+    container_name: api-gateway
+    restart: on-failure
+    depends_on:
+      redis:
+        condition: service_healthy
+      keycloak:
+        condition: service_started
+      pet-service:
+        condition: service_started
+      catalog-service:
+        condition: service_started
+      appointment-service:
+        condition: service_started
+    environment:
+      PET_SERVICE_URL: http://pet-service:8081
+      PET_API_KEY: ${PET_API_KEY:-pet-service-key-2026}
+      CATALOG_SERVICE_URL: http://catalog-service:8083
+      CATALOG_API_KEY: ${CATALOG_API_KEY:-catalog-service-key-2026}
+      APPOINTMENT_SERVICE_URL: http://appointment-service:8082
+      APPOINTMENT_API_KEY: ${APPOINTMENT_API_KEY:-appointment-service-key-2026}
+      KEYCLOAK_JWK_URI: http://keycloak:8080/realms/petcare/protocol/openid-connect/certs
+      REDIS_HOST: redis
+      CORS_ALLOWED_ORIGINS: http://localhost:3000
+      JAVA_TOOL_OPTIONS: -Xmx256m
+    ports:
+      - "8080:8080"
+
+  client:
+    build: ./client
+    container_name: pet-client
+    depends_on:
+      - api-gateway
+    ports:
+      - "3000:80"
 
 volumes:
   pgdata:
