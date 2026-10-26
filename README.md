@@ -34,6 +34,7 @@ Built as an individual project for the *Service Oriented Computing* module at Ho
 |---|---|
 | ![Register](docs/screenshots/02-register.png) | ![Pets](docs/screenshots/03-pets.png) |
 | ![Appointments](docs/screenshots/04-appointments.png) | ![Swagger UI](docs/screenshots/05-swagger.png) |
+| ![Docker](docs/screenshots/06-docker.png) | ![Docker](docs/screenshots/07-Docker2.png) |
 
 ## Highlights
 
